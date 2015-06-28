@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Pinchzoom.js Demo</title>
+
+    <style type="text/css">
+        div.pinch-zoom,
+        div.pinch-zoom img{
+            width: 100%;
+            -webkit-user-drag: none;
+        }
+		.midtbl
+		{
+			position:absolute;
+			height:100%;	
+			width:100%;
+		}
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- pinchzoom requires: jquery -->
+    <script type="text/javascript" src="../dependencies/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../src/pinchzoom.js"></script>
+	<script type="text/javascript" src="../../cordova.js"></script>
+    
+    
+	
+	
+    <script type="text/javascript">
+		$(document).ready(function(e) {
+            
+       
+
+
+		//	var _Url= window.location.href;
+			//var arr =_Url.split('?');
+			//var parameters =arr[1];
+    		parameter = window.localStorage.getItem("src");  
+			
+			console.log(parameter);
+			
+			$('#Mainimage').attr('src',parameter);
+			
+			var ww=$(window).width();
+			var wh=$(window).height();
+			
+			
+			
+			
+			
+			console.log('Page Loaded');
+			
+           
+			
+			$('.page').css('height','100%');
+			
+			
+			
+			
+			
+			
+			
+			$("#Mainimage").one("load", function() {
+				console.log('Image Loaded');
+				
+				 $('div.pinch-zoom').each(function () {
+                	new RTP.PinchZoom($(this), {});
+					
+            	});
+				
+				 var ImgHeight= $('#Mainimage').height();
+				  	
+					var ImgHeight= $('#Mainimage').height();
+					var Page_Height=$('.page').height();
+					
+					
+					
+					var Padding_Top=(Page_Height-ImgHeight -50)/2;
+					
+					console.log('Padding Top :' + Padding_Top);
+					
+					
+					 //$('#Mainimage').css('padding-top',Padding_Top + 'px');
+					 $('#Mainimage').css('display','block');
+					 $('.pinch-zoom-container').css('height','100%');
+					 
+				});
+        });
+    </script>
+</head>
+<body>
+
+    <div class="page">
+        <div class="pinch-zoom">
+            <div class="description">
+                
+              
+            </div>
+            <table cellpadding="0" cellpadding="0" class="midtbl">
+            	<tr>
+            		<td valign="middle">
+                    	<img id="Mainimage" width="100%" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget
+		id="com.phonegap.surajmahajan"
+    version="1.6.1"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:gap="http://phonegap.com/ns/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <name> AMBUJA PLAN and DESIGN APPLICATION</name>
+    <description>
+       Updates : 
+    </description>
+    <author email="er.surajmahajan@gmail.com" href="http://surajmahajan.wordpress.com">
+       Suraj Mahajan
+    </author>
+	
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<gap:platform name="winphone" />
+	<gap:platform name="Firefox OS" />
+	<gap:platform name="Ubuntu" />
+	<gap:platform name="Tizen" />
+	
+   
+
+    <!-- X-Services PhoneGap Build plugins -->
+	<gap:plugin name="org.apache.cordova.camera" />
+	<gap:plugin name="org.apache.cordova.media-capture" />
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.file" />
+	<gap:plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="org.apache.cordova.media" />
+	
+    <gap:plugin name="nl.x-services.plugins.socialsharing" />
+    <gap:plugin name="nl.x-services.plugins.calendar" />
+    <gap:plugin name="nl.x-services.plugins.ioswebviewcolor" />
+    <gap:plugin name="nl.x-services.plugins.videocaptureplus" />
+    <gap:plugin name="nl.x-services.plugins.flashlight" />
+    <gap:plugin name="nl.x-services.plugins.toast" />
+    <gap:plugin name="nl.x-services.plugins.insomnia" />
+    <gap:plugin name="nl.x-services.plugins.sslcertificatechecker" />
+    <gap:plugin name="nl.x-services.plugins.headsetdetection" />
+    <gap:plugin name="nl.x-services.plugins.backgroundaudio" />
+    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+      <param name="URL_SCHEME" value="xpluginsdemo" />
+    </gap:plugin>
+    <!--<gap:plugin name="nl.x-services.plugins.wkwebview" />-->
+    <gap:plugin name="nl.x-services.plugins.actionsheet" version="1.1.4"  source="plugins.cordova.io"/>
+    <gap:plugin name="com.telerik.plugins.nativepagetransitions" source="plugins.cordova.io" />
+    <gap:plugin name="com.telerik.plugins.wkwebview" version="0.3.5" source="plugins.cordova.io" />
+
+    <gap:plugin name="org.apache.cordova.statusbar" version="0.1.10" source="plugins.cordova.io" />
+
+
+    <!-- PhoneGap plugins -->
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <!--<gap:plugin name="org.apache.cordova.inappbrowser" />-->
+
+
+    <preference name="phonegap-version" value="3.7.0" />
+    <!--<preference name="orientation" value="portrait" />-->
+	<preference name="LoadingDialog" value="Please wait, the app is loading"/>
+	<preference name="AllowInlineMediaPlayback" value="true"/>
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="8" />
+    <preference name="android-targetSdkVersion" value="19" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="SplashScreenDelay" value="2000" />
+
+  <icon src="icon.png" />
+    <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
+    <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
+    <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon-72-hdpi.png" />
+    <icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon-96-xhdpi.png" />
+     
+
+    <access origin="*" />
+</widget>

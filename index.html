@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<meta name="format-detection" content="telephone=no"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
+
+
+  
+<link href="jquery.mobile-1.4.5.css" type="text/css" rel="stylesheet" />
+<script type="text/JavaScript" src="jquery.js"></script>
+ 
+
+  
+<script type="text/JavaScript" charset="utf-8" src="cordova.js"></script>
+
+<script type="text/JavaScript" src="jquery.mobile-1.4.5.js"></script>
+
+<script type="text/JavaScript" src="xui-2.3.2.min.js"></script>
+<link href="Style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="themes/Ambuja.min.css" />
+
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+
+<script type="text/javascript" src="js/index.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$("#BtnSubmit").click(function(){
+				a=$("#txtKey").val();
+				if (a=="NM12357")
+				{
+					window.localStorage.setItem("key", a);
+					location.href="main.html";
+				}
+				else
+				{
+					alert('Please Enter Proper Password!');
+				}
+			});
+			var value = window.localStorage.getItem("key");
+			if (value.length=="7")
+			{
+				location.href="main.html";
+			}
+		});
+
+    function onDeviceReady() {
+        window.localStorage.setItem("key", "value");
+        var keyname = window.localStorage.key(i);
+        // keyname is now equal to "key"
+        var value = window.localStorage.getItem("key");
+        // value is now equal to "value"
+        window.localStorage.removeItem("key");
+        window.localStorage.setItem("key2", "value2");
+        window.localStorage.clear();
+    }
+
+
+
+			
+			function passwordsave()
+			{
+					
+			}
+		</script>
+        
+  
+</head>
+
+<body>
+
+<div data-role="page" id="indexpage" data-theme="a" >
+        <div data-role="content" id="constHeader" data-theme="a">
+            <div class="ui-grid-a"> 
+               <div class="ui-block-a" >
+                <div class="ui-bar ui-bar-f">
+                    <h1 style="text-align:center;line-height:30px;">
+                        HOUSE ARCHITECTURE APPLICATION
+                    </h1>
+                </div>
+               </div>
+                <div class="ui-block-b" >
+                <div class="ui-bar ui-bar-e" style="text-align:center">
+                    <img src="images/Main_Logo.png" onclick="socialsharingDemo()" />
+                </div>
+               </div>
+           </div>
+     </div>
+     
+     <div data-role="content" role="main" class="ui-content" data-theme="a" >
+      
+      <h2>Enter Password </h2>
+      <input type="password" id="txtKey" />
+       
+       <a href="" data-role="button" id="BtnSubmit" onclick="passwordsave()" >Submit</a>
+        
+     </div>
+   
+   	<div data-role="footer" data-theme="a" >
+    	
+    	
+        
+    </div>
+   
+   </div>
+</body>
+</html>

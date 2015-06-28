@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<title>Untitled Document</title>
+
+<meta charset="utf-8"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
+	
+
+  
+<link href="jquery.mobile-1.4.5.css" type="text/css" rel="stylesheet" />
+<script type="text/JavaScript" src="jquery.js"></script>
+ 
+
+  
+<script type="text/JavaScript" charset="utf-8" src="cordova.js"></script>
+
+<script type="text/JavaScript" src="jquery.mobile-1.4.5.js"></script>
+
+<script type="text/JavaScript" src="xui-2.3.2.min.js"></script>
+<link href="Style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/JavaScript" src="MainScript.js"></script>
+
+<link rel="stylesheet" href="themes/Ambuja.min.css" />
+
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+
+
+<link rel="stylesheet" href="touchgallery.css" />
+
+<script type="text/javascript" src="jquery.touchSwipe.min.js"></script>
+
+<script src="touchgallery.js"></script>
+  		
+<script src="js/socialsharing-plugin-demo.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+  app.initialize();
+
+  // this is for the LaunchMyApp plugin
+  function handleOpenURL(url) {
+    setTimeout(function() {
+      //alert("LaunchMyApp plugin received url: " + url);
+    }, 0);
+  }
+
+  window.onerror = function(a,b,c) {
+   // alert(a + "; " + b + "; " + c);
+  };
+
+  //alert('actionsheet theme, 1: ' + window.plugins.actionsheet.ANDROID_THEMES.THEME_HOLO_LIGHT);
+</script>
+
+
+
+
+</head>
+
+<body class="app">
+
+
+
+	<div data-role="page" id="indexpage" data-theme="a" >
+        <div data-role="content" id="constHeader" data-theme="a">
+            <div class="ui-grid-a"> 
+               <div class="ui-block-a" >
+                <div class="ui-bar ui-bar-f">
+                    <h1 style="text-align:center;line-height:30px;">
+                        AMBUJA PLAN & DESIGN APPLICATION
+                    </h1>
+                </div>
+               </div>
+                <div class="ui-block-b" >
+                <div class="ui-bar ui-bar-e" style="text-align:center">
+                    <img src="images/Main_Logo.png" onclick="socialsharingDemo()" />
+                </div>
+               </div>
+           </div>
+     </div>
+     
+     <div data-role="content" role="main" class="ui-content" data-theme="a" >
+      
+      
+        <ul id="MainCats" data-role="listview" class="ui-listview">
+
+        </ul>
+        
+     </div>
+   
+   	<div data-role="footer" data-theme="a" >
+    	
+    	<center>
+        	<a href="#MyWork" onclick="getMyInfo()" data-role="button">My Work Experience</a>
+        </center>
+        
+    </div>
+   
+   </div>
+   
+   
+   <!--------------------------------------------------------------Second Page------------------------------------------------------------------------------>
+   
+   
+    <div data-role="page" id="MainCat"  data-theme="a">
+            <div data-role="content" id="constHeader" data-theme="a">
+                <div class="ui-grid-a"> 
+                   <div class="ui-block-a" >
+                    <div class="ui-bar ui-bar-f">
+                        <h1 style="text-align:center;line-height:30px;">
+                            AMBUJA PLAN & DESIGN APPLICATION
+                        </h1>
+                    </div>
+                   </div>
+                    <div class="ui-block-b" >
+                    <div class="ui-bar ui-bar-e" style="text-align:center">
+                        <a href="#indexpage"><img src="images/Main_Logo.png"  /></a>
+                    </div>
+
+                   </div>
+               </div>
+         </div>
+        
+        <div data-role="content" data-theme="a" >
+			<a href="#" data-role="button" id="MainCatTitle" data-theme="a"> </a>
+     	
+               <div id="SubTabView">
+               
+               </div>
+              
+    	</div>
+    </div>
+        
+        
+        
+      
+       
+     <!--------------------------------------------------------------Loader Page------------------------------------------------------------------------------>
+    
+    <div data-role="page" id="LoaderPage"  data-theme="a">
+        <div data-role="content" data-theme="a" >
+			
+               <div id="ImageLoader">
+               		
+               </div>
+               <a href="JavaScript:Return False()" style="display:none"  id="btnNetLoadmore" sc-id="0" onclick="loadnetmore(this)" ci-id="0" class="ui-link ui-btn ui-btn-b ui-shadow ui-corner-all ui-btn-active">More>> </a>
+    	</div>
+    </div>
+
+        
+     <!--------------------------------------------------------------Elevation Page------------------------------------------------------------------------------>
+    
+    <div data-role="page" id="Elevation"  data-theme="a">
+            <div data-role="content" id="constHeader" data-theme="a">
+                <div class="ui-grid-a"> 
+                   <div class="ui-block-a" >
+                    <div class="ui-bar ui-bar-f">
+                        <h1 style="text-align:center;line-height:30px;">
+                            AMBUJA PLAN & DESIGN APPLICATION
+                        </h1>
+                    </div>
+                   </div>
+                    <div class="ui-block-b" >
+                    <div class="ui-bar ui-bar-e" style="text-align:center">
+                        <a href="#indexpage"><img src="images/Main_Logo.png"  /></a>
+                    </div>
+                   </div>
+               </div>
+         </div>
+        
+        <div data-role="content" data-theme="a" >
+			<a href="#" data-role="button" id="ElCatTitle" data-theme="a"> </a>
+     	
+               <div id="ChieldTabView">
+               
+               </div>
+    	</div>
+    </div>
+    
+     <!--------------------------------------------------------------My Work Page------------------------------------------------------------------------------>
+	
+	   <div data-role="page" id="MyWork"  data-theme="a">
+            <div data-role="content" id="constHeader" data-theme="a">
+                <div class="ui-grid-a"> 
+                   <div class="ui-block-a" >
+                    <div class="ui-bar ui-bar-f">
+                        <h1 style="text-align:center;line-height:30px;">
+                          AMBUJA PLAN & DESIGN APPLICATION
+                        </h1>
+                    </div>
+                   </div>
+                    <div class="ui-block-b" >
+                    <div class="ui-bar ui-bar-e" style="text-align:center">
+                        <a href="#indexpage"><img src="images/Main_Logo.png"  /></a>
+                    </div>
+                   </div>
+               </div>
+         </div>
+        
+        <div data-role="content" data-theme="a" >
+		
+     	
+            <label for="txtName">Name:</label>
+			<input type="text" name="txtName" id="txtName" value="">
+			
+			<label for="txtMobile">Mobile:</label>
+			<input type="tel" name="txtMobile" id="txtMobile" value="">
+			
+			<label for="txtEmail">Email ID:</label>
+			<input type="text" name="txtEmail" id="txtEmail" value="">
+			  
+			<a href="#" data-role="button" onclick="saveMyDetails()" data-theme="a">Save</a>
+			<a href="#AddMyWork" data-role="button"   data-theme="a">Add New Project</a>
+			<a href="#MyAllWorks" onclick="geallWorks()" data-role="button"   data-theme="a">All Completed Projects</a>
+    	</div>
+    </div>
+	
+	
+	
+	
+	<!--------------------------------------------------------------My Work Page Main------------------------------------------------------------------------------>
+    
+	   <div data-role="page" id="AddMyWork"  data-theme="a">
+            <div data-role="content" id="constHeader" data-theme="a">
+                <div class="ui-grid-a"> 
+                   <div class="ui-block-a" >
+                    <div class="ui-bar ui-bar-f">
+                        <h1 style="text-align:center;line-height:30px;">
+                           AMBUJA PLAN & DESIGN APPLICATION
+                        </h1>
+                    </div>
+                   </div>
+                    <div class="ui-block-b" >
+                    <div class="ui-bar ui-bar-e" style="text-align:center">
+                        <a href="#indexpage"><img src="images/Main_Logo.png"  /></a>
+                    </div>
+                   </div>
+               </div>
+         </div>
+        
+        <div data-role="content" data-theme="a" >
+		
+
+			<label for="txtName_">Name of the Client:</label>
+			<input type="text" name="txtName_" id="txtName_" value="">
+
+            <label for="txtAddress_">Address:</label>
+			<input type="text" name="txtAddress_" id="txtAddress_" value="">
+			
+			<label for="txtArea_">Built up Area (Sq.Ft.) :</label>
+			<input type="number" name="txtArea_" id="txtArea_" value="">
+			
+			<label for="txtCost_">Cost (Rs.):</label>
+			<input type="number" name="txtCost_" id="txtCost_" value="">
+			
+			<label for="txtDuretion_">Duration  (Months):</label>
+			<input type="number" name="txtDuretion_" id="txtDuretion_" value="">
+			
+			<label for="txtFile" class="DisEdit">Work Image</label>
+			<a href="#" data-role="button" class="DisEdit" onclick="capturePhoto()">Capture Photo</a>
+			<br />
+			<!--<img style="display:none;width:60px;height:60px;" id="smallImage"  src="" />-->
+			<ul id="MyImages" data-role="listview" class="ui-listview">
+				
+			</ul>
+			
+		<br />
+			  
+			<a href="#" data-role="button" id="fileinput" onclick="SaveWork()" data-theme="a">Save</a>
+			
+			
+			<textarea id="sample" style="display:none"></textarea>
+			
+			<div id="categorythit"></div>
+			
+    	</div>
+    </div>
+	
+	<!--------------------------------------------------------------My All Work  ------------------------------------------------------------------------------>
+    
+	   <div data-role="page" id="MyAllWorks"  data-theme="a">
+            <div data-role="content" id="constHeader" data-theme="a">
+                <div class="ui-grid-a"> 
+                   <div class="ui-block-a" >
+                    <div class="ui-bar ui-bar-f">
+                        <h1 style="text-align:center;line-height:30px;">
+                           AMBUJA PLAN & DESIGN APPLICATION
+                        </h1>
+                    </div>
+                   </div>
+                    <div class="ui-block-b" >
+                    <div class="ui-bar ui-bar-e" style="text-align:center">
+                        <a href="#indexpage"><img src="images/Main_Logo.png"  /></a>
+                    </div>
+                   </div>
+               </div>
+         </div>
+        
+        <div data-role="content" data-theme="a" >
+			<a href="#" data-role="button" id="MainCatTitle" data-theme="a">My Completed Projects</a>
+			
+			<div id="My_works">
+			
+			</div>
+			
+    	</div>
+    </div>
+	
+	
+	
+     <!--------------------------------------------------------------Image Zoom Page------------------------------------------------------------------------------>
+    
+    <div data-role="page" data-theme="a" id="ImageView" class="whitebg" style="margin:0px;background-color:#000;">         
+         <div data-role="content" id="iframeID" style="padding: 0px;margin: 0px;width: 100%;" >
+				
+         </div>
+    </div>
+</body>
+</html>
