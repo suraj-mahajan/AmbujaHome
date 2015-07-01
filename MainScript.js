@@ -115,7 +115,7 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		tx.executeSql('insert into PlanMaster (PM_ID,Title,Order_) values (5,"Door / Windows",6)');
 		tx.executeSql('insert into PlanMaster (PM_ID,Title,Order_) values (6,"Kitchen",4)');
 		tx.executeSql('insert into PlanMaster (PM_ID,Title,Order_) values (7,"Drawing Room",3)');
-		tx.executeSql('insert into PlanMaster (PM_ID,Title,Order_) values (8,"Vaastu",8)');
+		tx.executeSql('insert into PlanMaster (PM_ID,Title,Order_) values (8,"Vastu",8)');
 		tx.executeSql('insert into PlanMaster (PM_ID,Title,Order_) values (9,"Special features",9)')
 		
 		/*----------Plan--------------*/
