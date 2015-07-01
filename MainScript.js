@@ -1,4 +1,4 @@
-var DBName='DEL_72';
+var DBName='DEL_80';
 var _This_Sub_Cat_ID=0;
 var _This_Image_ID=0;
 var _this_SC_ID=0;
@@ -153,11 +153,21 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		
 		/*----------Vasstu--------------*/
 		tx.executeSql('insert into SuCats (SC_ID,PM_ID,Title) values (19,8,"Vastu")');
+
+		/*----------Special Features--------------*/
+		tx.executeSql('insert into SuCats (SC_ID,PM_ID,Title) values (20,9,"A")');
+		tx.executeSql('insert into SuCats (SC_ID,PM_ID,Title) values (21,9,"B")');
+		tx.executeSql('insert into SuCats (SC_ID,PM_ID,Title) values (22,9,"C")');
+		tx.executeSql('insert into SuCats (SC_ID,PM_ID,Title) values (23,9,"D")');
+
 		
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (1,1,"G")');  /*--- plan G fro 500-750 ---*/
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (2,1,"G+1")');  /*--- plan G +1 for 500-750  ---*/
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (3,1,"G+2")'); /*--- plan G + 2 for 500-750---*/
 		
+		
+
+
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (4,2,"G")'); 
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (5,2,"G+1")'); 
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (6,2,"G+2")'); 
@@ -169,6 +179,7 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (10,4,"G")'); 
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (11,4,"G+1")'); 
 		tx.executeSql('insert into ChieldCats (CC_ID,SC_ID,Title) values (12,4,"G+2")'); 
+		
 		
 		/*-----------------------------------------------------------------------------------------------------*/
 		/*---------------------------------------IMAGES INSERT-------------------------------------------------*/
@@ -458,7 +469,15 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		tx.executeSql('insert into ChieldCatImages (CC_ID,Src) values (12,"imgs/elevation/G2/07.jpg")');  /*---  PLAN 500-750 G + 2---*/
 		tx.executeSql('insert into ChieldCatImages (CC_ID,Src) values (12,"imgs/elevation/G2/08.jpg")');  /*---  PLAN 500-750 G + 2---*/
 		tx.executeSql('insert into ChieldCatImages (CC_ID,Src) values (12,"imgs/elevation/G2/09.jpg")');  /*---  PLAN 500-750 G + 2---*/
-		tx.executeSql('insert into ChieldCatImages (CC_ID,Src) values (12,"imgs/elevation/G2/10.jpg")');  /*---  PLAN 500-750 G + 2---*/	
+		tx.executeSql('insert into ChieldCatImages (CC_ID,Src) values (12,"imgs/elevation/G2/10.jpg")');  /*---  PLAN 500-750 G + 2---*/
+
+
+		tx.executeSql('insert into SuCatImages (SC_ID,Src) values (20,"imgs/SF/01.jpg")');  /*---  PLAN 500-750 G + 2---*/
+		tx.executeSql('insert into SuCatImages (SC_ID,Src) values (21,"imgs/SF/02.jpg")');  /*---  PLAN 500-750 G + 2---*/
+		tx.executeSql('insert into SuCatImages (SC_ID,Src) values (22,"imgs/SF/01.jpg")');  /*---  PLAN 500-750 G + 2---*/
+		tx.executeSql('insert into SuCatImages (SC_ID,Src) values (23,"imgs/SF/02.jpg")');  /*---  PLAN 500-750 G + 2---*/
+
+
 		
 		
 		
@@ -608,15 +627,104 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 	function LoadNetCC_Images(_LoaderCC)
 	{
 		_NetCc_ID=	_LoaderCC;
-		var db = window.openDatabase(DBName, "1.0", "Cordova Demo", 200000);
-	    db.transaction(DownloadCCImage, errorCB, successCB);
+		console.log("_NetCc_ID="+ _NetCc_ID);
+		//var db = window.openDatabase(DBName, "1.0", "Cordova Demo", 200000);
+	    //db.transaction(DownloadCCImage, errorCB, successCB);
+
+	    window.location="#LoaderPageEle";
+		$('#btnNetLoadmoreEle').css('display','none');
+		$('#ImageLoaderEle').html("<span id='netloadinspan'>Loading ...</span>");
+		LoadtenEleImages(_NetCc_ID,0);
 	}
+
+
+	function LoadtenEleImages(CC_ID,CI_ID)
+	{
+		console.log("LoadtenEleImages");
+		var _loadedImages=[]
+		var li=0;
+		var Last_CiID=CI_ID;
+		var _IMG_ldr_html='<ul class="ui-listview" style="width:100%;margin-left:auto;margin-right:auto;">';
+		var flickerAPI =_MainUrl+ "services/loadchieldimages.php?CC_ID="+ CC_ID +"&CCI_ID=" + CI_ID ;
+		$.getJSON( flickerAPI, function(json)
+		{
+			var totalBanners=json.length;
+			var _Existing_BannerSrc="";
+			$.each(json, function(idx, obj) {
+				if (obj.Src==undefined)
+				{
+				
+				}
+				else
+				{
+					console.log( obj.Src);
+					_loadedImages[li]={CI_ID:[obj.CI_ID],Src:[obj.Src],SC_ID:[obj.SC_ID]};
+					_IMG_ldr_html +='<li class="ui-li-has-thumb"><span href="#" class="ui-btn "><img width="100" height="100" src="'+ _MainUrl +'/Advts/Baby_'+ obj.Src +'"> <a href="JavaScript:Return False()" onclick="downloadNetEleImage(this)" cc-id="'+obj.CC_ID+'" CI-ID="'+obj.CCI_ID+'"  src="'+obj.Src+'" class="ui-link ui-btn ui-btn-b ui-shadow ui-corner-all ui-btn-active">download </a> </span></li>';
+					Last_CiID=obj.CCI_ID;
+					li=li+1;
+					
+					
+				}
+			});	
+			
+			_IMG_ldr_html+='</ul>';
+			$('#btnNetLoadmoreEle').css('display','Block');
+			$('#netloadinspan').css('display','none');
+			$('#btnNetLoadmoreEle').attr('ci-id',Last_CiID);
+			$('#btnNetLoadmoreEle').attr('cc-id',CC_ID);
+			$('#ImageLoaderEle').html($('#ImageLoader').html()+_IMG_ldr_html);
+		})	
+	}
+
+	function loadnetmoreEle(t)
+	{
+		var SC_ID=$(t).attr('cc-id');	
+		var CI_ID=$(t).attr('ci-id');	
+		console.log(SC_ID);
+		
+		
+		
+		LoadtenImages(SC_ID,CI_ID)
+	}
+	
+function downloadNetEleImage(t)
+	{
+		//tx.executeSql("select IFNull((max(CCI_ID)),0) as 'MX' from chieldcatimages where CC_ID=" + _NetCc_ID,[],DownloadImageCCResult,errorCB);
+		var CC_ID=$(t).attr('CC-ID');	
+		var CI_ID=$(t).attr('CI-ID');	
+		var src=$(t).attr('src');
+		console.log(CC_ID);
+		console.log(CI_ID);
+		console.log(src);
+		_Loaded_CI_ID=CI_ID;
+		_NetCc_ID=CC_ID;
+		_Loaded_CC_Src=_MainUrl +'/Advts/'+ src;
+		var db5 = window.openDatabase(DBName, "1.0", "Cordova Demo", 200000);
+		db5.transaction(insertNewImageEleSrc, errorCB, successCB);
+		console.log("downloadNetEleImage");
+	}
+	
+	function insertNewImageEleSrc(tx)
+	{
+		console.log("insertNewImageSrc");
+		tx.executeSql('insert into chieldcatimages (CCI_ID,CC_ID,Src) values ('+ _Loaded_CCI_ID +','+ _NetCc_ID +',"'+ _Loaded_CC_Src +'")');
+		_Loaded_CCI_ID=0;
+		_Loaded_CC_Src=0;
+		//LoadImagesForMe(_NetSc_ID);
+		LoadImagesForMeSub(_NetCc_ID);
+	}
+
 	function DownloadCCImage(tx)
 	{
+		console.log("DownloadCCImage");
 		tx.executeSql("select IFNull((max(CCI_ID)),0) as 'MX' from chieldcatimages where CC_ID=" +_NetCc_ID,[],DownloadImageCCResult,errorCB);
 	}
+
+
+
 	function DownloadImageCCResult(t,r)
 	{
+			console.log("DownloadImageCCResult");
 			$.mobile.loading( 'show', {
 			text: 'Loading..',
 			textVisible: false,
@@ -790,7 +898,9 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		_Loaded_SC_Src=0;
 		LoadImagesForMe(_NetSc_ID);
 	}
-	
+
+
+
 	
 	function DeleteImage(t)
 	{
@@ -959,12 +1069,35 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		
 		var wh=$(window).height();
 			$('#iframeID').html('');
-			window.localStorage.setItem("src", '../../'+src);
+
+			var _link='';
+			if (ValidURL(src)==true)
+			{
+					_link=src;
+			}
+			else
+			{
+				_link='../../'+src;
+			}
+
+			window.localStorage.setItem("src", _link);
 			var _iframeHtml='<iframe frameborder="0" style="height:'+wh+'px;width:100%;" src="imageview/demo/pinchzoom.html" id="MainImagezoomFrame" style="width:100%;"></iframe>';
 			$('#iframeID').html('');
 			$('#iframeID').html(_iframeHtml);
 			
 			window.location='#ImageView';
+	}
+
+	function ValidURL(str) {
+			console.log(str);
+	 	if (str.indexOf("http://")>-1)
+	 	{
+	 			return true;
+	 	}
+	 	else
+	 	{
+	 			return false;
+	 	}
 	}
 	
 	
