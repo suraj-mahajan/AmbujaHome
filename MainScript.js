@@ -13,6 +13,7 @@ var _Loaded_CI_ID=0;
 var _Loaded_SC_Src='';
 var _this_DeletableSrc='';
 var _NetCc_ID=0;
+var Last_CiID =0;
 
 var _Loaded_CCI_ID=0;
 var _Loaded_CC_Src='';
@@ -633,7 +634,7 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 
 	    window.location="#LoaderPageEle";
 		$('#btnNetLoadmoreEle').css('display','none');
-		$('#ImageLoaderEle').html("<span id='netloadinspan'>Loading ...</span>");
+		$('#ImageLoaderEle').html("<span id='netloadinspanEle'>Loading ...</span>");
 		LoadtenEleImages(_NetCc_ID,0);
 	}
 
@@ -643,7 +644,7 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 		console.log("LoadtenEleImages");
 		var _loadedImages=[]
 		var li=0;
-		var Last_CiID=CI_ID;
+		 Last_CiID=CI_ID;
 		var _IMG_ldr_html='<ul class="ui-listview" style="width:100%;margin-left:auto;margin-right:auto;">';
 		var flickerAPI =_MainUrl+ "services/loadchieldimages.php?CC_ID="+ CC_ID +"&CCI_ID=" + CI_ID ;
 		$.getJSON( flickerAPI, function(json)
@@ -659,6 +660,7 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 				{
 					console.log( obj.Src);
 					_loadedImages[li]={CI_ID:[obj.CI_ID],Src:[obj.Src],SC_ID:[obj.SC_ID]};
+					console.log("^^^^SC_ID:[obj.SC_ID]^^^^=" + obj.SC_ID);
 					_IMG_ldr_html +='<li class="ui-li-has-thumb"><span href="#" class="ui-btn "><img width="100" height="100" src="'+ _MainUrl +'/Advts/Baby_'+ obj.Src +'"> <a href="JavaScript:Return False()" onclick="downloadNetEleImage(this)" cc-id="'+obj.CC_ID+'" CI-ID="'+obj.CCI_ID+'"  src="'+obj.Src+'" class="ui-link ui-btn ui-btn-b ui-shadow ui-corner-all ui-btn-active">download </a> </span></li>';
 					Last_CiID=obj.CCI_ID;
 					li=li+1;
@@ -669,10 +671,10 @@ _PostHTML +='<li ><a class="ui-btn" OnClick="ShowSelectedcat('+ results.rows.ite
 			
 			_IMG_ldr_html+='</ul>';
 			$('#btnNetLoadmoreEle').css('display','Block');
-			$('#netloadinspan').css('display','none');
+			$('#netloadinspanEle').css('display','none');
 			$('#btnNetLoadmoreEle').attr('ci-id',Last_CiID);
 			$('#btnNetLoadmoreEle').attr('cc-id',CC_ID);
-			$('#ImageLoaderEle').html($('#ImageLoader').html()+_IMG_ldr_html);
+			$('#ImageLoaderEle').html($('#ImageLoaderEle').html()+_IMG_ldr_html);
 		})	
 	}
 
@@ -782,7 +784,7 @@ function downloadNetEleImage(t)
 		$('#ImageLoader').html("<span id='netloadinspan'>Loading ...</span>");
 		
 		
-		LoadtenImages(_NetSc_ID,0);
+		LoadtenImages(_NetSc_ID,Last_CiID);
 		
 	}
 	
