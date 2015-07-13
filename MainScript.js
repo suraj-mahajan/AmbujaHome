@@ -14,6 +14,7 @@ var _Loaded_SC_Src='';
 var _this_DeletableSrc='';
 var _NetCc_ID=0;
 var Last_CiID =0;
+var _this_WI_ID=0;
 
 var _Loaded_CCI_ID=0;
 var _Loaded_CC_Src='';
@@ -1492,7 +1493,7 @@ function downloadNetEleImage(t)
 			RtHtml+='<tr>';
 			RtHtml +='<td colspan="2">';
 			
-			RtHtml +='<a class="ui-mini ui-btn ui-btn-b ui-shadow ui-corner-all " id="MyImagesA" onclick="ShowMyImages(this,'+ _WI_ID +')" href="#">Show Images</a><span id="MyImagesSpan" style="display:none"></span>';
+			RtHtml +='<a class="ui-mini ui-btn ui-btn-b ui-shadow ui-corner-all " id="MyImagesA" onclick="ShowMyImages(this,'+ _WI_ID +')" href="#">Show Images</a><span id="MyImagesSpan_'+ _WI_ID +'" style="display:none"></span>';
 
 			/*RtHtml +='<div class="ui-grid-b" data-theme="b">';
 			RtHtml +='		<div class="ui-block-a">';
@@ -1532,10 +1533,12 @@ var _W_ID=0;
 	function ShowMyImages(t,WI_ID)
 	{
 		//alert("ShowMyImages");
-		var db15 = window.openDatabase(DBName, "1.0", "Cordova Demo", 200000);
-        db15.transaction(getMyImages, errorCB, successCB);	
 		_Link_This=t;
 		_W_ID=WI_ID;
+		_this_WI_ID=WI_ID;
+		var db15 = window.openDatabase(DBName, "1.0", "Cordova Demo", 200000);
+        db15.transaction(getMyImages, errorCB, successCB);	
+		
 	}
 	function getMyImages(tx)
 	{
@@ -1571,8 +1574,8 @@ var _W_ID=0;
 			//RtHtml+='<img style="width:50px;height:50px;" src="'+ r.rows.item(i).Src  +'" /><br>';
 		}
 		//$(_Link_This).html(RtHtml);
-		$('#MyImagesSpan').html(RtHtml);
-		$('#MyImagesSpan').css('display','block');
+		$('#MyImagesSpan_' + _this_WI_ID ).html(RtHtml);
+		$('#MyImagesSpan_' + _this_WI_ID).css('display','block');
 		
 		$('#MyImagesA').css('display','none');
 	}
