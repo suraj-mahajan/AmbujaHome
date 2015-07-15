@@ -1284,7 +1284,7 @@ function downloadNetEleImage(t)
 		}
 		tx.executeSql('insert into MyWorks (Address_,Area_,Cost_,Duretion_,Name_) values ("'+  $('#txtAddress_').val() +'","'+ $('#txtArea_').val() +'","'+ $("#txtCost_").val() +'","'+ $("#txtDuretion_").val() +'","'+ $("#txtName_").val() +'")',[],SaveWorkExecSuccess,SaveWorkExecError);	
 		
-		tx.executeSql('select W_ID as "MAX_" from MyWorks ',[],getMyWordMax,errorCB);
+		tx.executeSql('select max(W_ID) as "MAX_" from MyWorks ',[],getMyWordMax,errorCB);
 		
 		
 		
